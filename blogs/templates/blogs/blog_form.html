@@ -1,0 +1,17 @@
+{% extends 'blogs/base.html' %}
+
+{% block content %}
+<div class="col-6">
+    <div class="card-body">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            {% if object %}
+                <a href="{% url 'blogs:view' object.pk %}" type="submit" class="btn btn-success">Сохранить</a>
+            {% else %}
+                <button type="submit" class="btn btn-success">Создать блог</button>
+            {% endif %}
+        </form>
+    </div>
+</div>
+{% endblock %}

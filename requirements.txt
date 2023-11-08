@@ -1,0 +1,7 @@
+Django
+pillow
+psycopg2-binary
+pytz
+ipython
+pytils
+python-dotenv
