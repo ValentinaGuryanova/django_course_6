@@ -1,0 +1,19 @@
+{% extends 'blogs/base.html' %}
+{% load my_tags %}
+{% block content %}
+    <div class="row d-flex justify-content-center text-center">
+        <div class="card mx-auto" style="width: 73rem;">
+            <img src="{{ blog.image|my_media }}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <p class="card-text">
+                    <span class="blog-title">{{ object.header }}</span>
+                </p>
+                <hr>
+                <p class="card-text">{{ object.content }}</p>
+                <div class="card-footer text-right">
+                    Блог посмотрели {{object.count_views}} раз
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
