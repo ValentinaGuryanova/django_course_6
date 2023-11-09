@@ -1,16 +1,18 @@
-<div class="col-sm-4 offset-md-1 py-4">
-    <h4 class="text-white">Навигатор</h4>
-    <ul class="list-unstyled">
-        <li><a href="/" class="text-white">Главная</a></li>
-        <li><a href="{% url 'client:client_list' %}" class="text-white">Клиенты</a></li>
-        <li><a href="{% url 'mailing:list' %}" class="text-white">Рассылки</a></li>
-        <li><a href="{% url 'blogs:blogs' %}" class="text-white">Блоги</a></li>
+{% block content %}
+<div class="col-sm-12 offset-md-1 py-4">
+    <h4 class="text-black">МЕНЮ</h4>
+        <div class="col-12 mb-3">
+        <a href="/" class="btn btn-outline-primary">Главная</a>
+        <a href="{% url 'client:client_list' %}" class="btn btn-outline-primary">Клиенты</a>
+        <a href="{% url 'mailing:list' %}" class="btn btn-outline-primary">Рассылки</a>
+        <a href="{% url 'blogs:blogs' %}" class="text-white">Блоги</a>
         {% if user.is_authenticated %}
-            <li><a href="{% url 'users:profile_info' %}" class="text-white">Профиль</a></li>
-            <li><a href="{% url 'users:logout' %}" class="text-white">Выход</a></li>
+            <a href="{% url 'users:profile' %}" class="text-white">Профиль</a>
+            <a href="{% url 'users:logout' %}" class="text-white">Выход</a>
         {% else %}
-            <li><a href="{% url 'users:register' %}" class="text-white">Регистрация</a></li>
-            <li><a href="{% url 'users:login' %}" class="text-white">Войти</a></li>
+            <a href="{% url 'users:register' %}" class="text-white">Регистрация</a>
+            <a href="{% url 'users:login' %}" class="text-white">Войти</a>
         {% endif %}
-    </ul>
+        </div>
 </div>
+{% endblock %}

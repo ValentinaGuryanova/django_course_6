@@ -33,9 +33,9 @@ class Mailing(models.Model):
     ]
 
     mailing_time = models.DateTimeField(verbose_name="Время рассылки", default=timezone.now)
-    periodicity = models.PositiveSmallIntegerField(verbose_name="Периодичность", choices=TITLE_CHOICES_PERIODICITY, default=1)
+    period = models.PositiveSmallIntegerField(verbose_name="Периодичность", choices=TITLE_CHOICES_PERIODICITY, default=1)
     status = models.PositiveSmallIntegerField(verbose_name='Статус рассылки', choices=TITLE_CHOICES_STATUS, default=1)
-    massage = models.ForeignKey(Message, on_delete=models.SET_NULL, **NULLABLE)
+    message = models.ForeignKey(Message, on_delete=models.SET_NULL, **NULLABLE)
     user = models.ForeignKey(User, verbose_name='Пользователь', on_delete=models.CASCADE, **NULLABLE)
 
     def __str__(self):

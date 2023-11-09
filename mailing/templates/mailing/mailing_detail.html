@@ -1,11 +1,13 @@
-{% extends 'mailing/base.html'%}
+{% extends 'blogs/base.html'%}
 {% block content %}
-
+<div class="col-12 mb-5">
+<a class="btn btn-outline-primary" href="{% url 'blogs:main'%}">Назад</a>
+</div>
 <div class="col-md-6">
     <div class="card mb-4 box-shadow">
         <div class="card-body">
             <p class="card-text">{{ object.mailing_time }}</p>
-            <p class="card-text">{{ object.get_periodicity_display }}</p>
+            <p class="card-text">{{ object.get_period_display }}</p>
             <p class="card-text">
                 {% if object.status == 3 %}
                     <span class="text-muted">{{ object.get_status_display }}</span>

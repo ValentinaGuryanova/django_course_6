@@ -3,14 +3,14 @@ from django import forms
 from blogs.models import Blog
 
 
-class StyleForMixin:
+class StyleFormMixin:
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         for field_name, field in self.fields.items():
             field.widget.attrs['class'] = 'form-control'
 
 
-class BlogForm(StyleForMixin, forms.ModelForm):
+class BlogForm(StyleFormMixin, forms.ModelForm):
     class Meta:
         model = Blog
         fields = ('header', 'content', 'image',)
@@ -27,3 +27,5 @@ class BlogForm(StyleForMixin, forms.ModelForm):
                 raise forms.ValidationError(f'В вашем названии курса есть запретное слово "{forbidden_word.title()}".')
 
         return cleaned_data
+
+

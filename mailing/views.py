@@ -11,7 +11,6 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.core.mail import send_mail
 
-from blogs.models import Blog
 from client.models import Client
 from mailing.forms import MailingForms
 from mailing.models import Mailing, Log
@@ -56,8 +55,8 @@ class MailingCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView)
         new_mailing = form.save()
 
         if new_mailing.mailing_time <= datetime.now(tz):
-            mail_subject = new_mailing.massage.body if new_mailing.massage is not None else 'Рассылка'
-            message = new_mailing.massage.theme if new_mailing.massage is not None else 'Вам назначена рассылка'
+            mail_subject = new_mailing.message.body if new_mailing.message is not None else 'Рассылка'
+            message = new_mailing.message.theme if new_mailing.message is not None else 'Вам назначена рассылка'
             try:
                 send_mail(mail_subject, message, settings.EMAIL_HOST_USER, clients)
                 log = Log.objects.create(date_attempt=datetime.now(tz), status='Успешно', answer='200', mailing=new_mailing)
