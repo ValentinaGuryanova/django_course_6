@@ -1,10 +1,10 @@
 from django import forms
 
-from blogs.forms import StyleForMixin
+from blogs.forms import StyleFormMixin
 from mailing.models import Mailing
 
 
-class MailingForms(StyleForMixin, forms.ModelForm):
+class MailingForms(StyleFormMixin, forms.ModelForm):
 
     class Meta:
         model = Mailing

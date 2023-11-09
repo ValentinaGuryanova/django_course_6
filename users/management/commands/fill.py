@@ -26,13 +26,13 @@ class Command(BaseCommand):
         Message.objects.bulk_create(message_for_create)
 
         mailing_list = [
-            {'mailing_time': timezone.now(), 'periodicity': 1, 'status': 1, 'massage': Message.objects.get(pk=1)},
-            {'mailing_time': timezone.now(), 'periodicity': 1, 'status': 2, 'massage': Message.objects.get(pk=2)},
-            {'mailing_time': timezone.now(), 'periodicity': 2, 'status': 3, 'massage': Message.objects.get(pk=1)},
-            {'mailing_time': timezone.now(), 'periodicity': 2, 'status': 3, 'massage': Message.objects.get(pk=2)},
-            {'mailing_time': timezone.now(), 'periodicity': 3, 'status': 1, 'massage': Message.objects.get(pk=1)},
-            {'mailing_time': timezone.now(), 'periodicity': 3, 'status': 2, 'massage': Message.objects.get(pk=2)},
-            {'mailing_time': timezone.now(), 'periodicity': 1, 'status': 1, 'massage': Message.objects.get(pk=1)},
+            {'mailing_time': timezone.now(), 'periodicity': 1, 'status': 1, 'message': Message.objects.get(pk=1)},
+            {'mailing_time': timezone.now(), 'periodicity': 2, 'status': 2, 'message': Message.objects.get(pk=2)},
+            {'mailing_time': timezone.now(), 'periodicity': 3, 'status': 1, 'message': Message.objects.get(pk=1)},
+            {'mailing_time': timezone.now(), 'periodicity': 1, 'status': 3, 'message': Message.objects.get(pk=2)},
+            {'mailing_time': timezone.now(), 'periodicity': 2, 'status': 1, 'message': Message.objects.get(pk=1)},
+            {'mailing_time': timezone.now(), 'periodicity': 3, 'status': 3, 'message': Message.objects.get(pk=2)},
+            {'mailing_time': timezone.now(), 'periodicity': 1, 'status': 1, 'message': Message.objects.get(pk=1)},
             {'mailing_time': timezone.now(), 'periodicity': 1, 'status': 3},
         ]
         mailing_for_create = []

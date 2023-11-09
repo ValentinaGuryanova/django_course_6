@@ -1,5 +1,8 @@
 {% extends 'blogs/base.html'%}
 {% block content %}
+<div class="col-12 mb-5">
+<a class="btn btn-outline-primary" href="{% url 'client:client_list'%}">Назад</a>
+</div>
 <div class="col-12">
     <form method="post" enctype="multipart/form-data">
         <div class="row">

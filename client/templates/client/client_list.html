@@ -2,6 +2,7 @@
 {% block content %}
 <div class="col-12 mb-5">
     <a class="btn btn-outline-primary" href="{% url 'client:create'%}">Добавить клиента</a>
+    <a class="btn btn-outline-primary" href="{% url 'blogs:main'%}">Назад</a>
 </div>
 {% for object in object_list %}
 <div class="col-md-4">

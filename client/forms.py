@@ -1,10 +1,10 @@
 from django import forms
 
-from blogs.forms import StyleForMixin
+from blogs.forms import StyleFormMixin
 from client.models import Client
 
 
-class ClientForms(StyleForMixin, forms.ModelForm):
+class ClientForms(StyleFormMixin, forms.ModelForm):
 
     class Meta:
         model = Client

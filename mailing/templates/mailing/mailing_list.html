@@ -2,13 +2,14 @@
 {% block content %}
 <div class="col-12 mb-5">
     <a class="btn btn-outline-primary" href="{% url 'mailing:create'%}">Добавить рассылку</a>
+    <a class="btn btn-outline-primary" href="{% url 'blogs:main'%}">Назад</a>
 </div>
 {% for object in object_list %}
 <div class="col-md-4">
     <div class="card mb-4 box-shadow">
         <div class="card-body">
             <p class="card-text">{{ object.mailing_time }}</p>
-            <p class="card-text">{{ object.get_periodicity_display }}</p>
+            <p class="card-text">{{ object.get_period_display }}</p>
             <p class="card-text">
                 {% if object.status == 3 %}
                     <span class="text-muted">{{ object.get_status_display }}</span>
@@ -19,13 +20,13 @@
             <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                     {% if perms.mailing.view_mailing %}
-                        <button type="button" class="btn btn-sm btn-outline-secondary"><a href="{% url 'mailing:view_mailing' object.pk %}">View</a></button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary"><a href="{% url 'mailing:view_mailing' object.pk %}">Просмотр</a></button>
                     {% endif %}
                     {% if perms.mailing.change_mailing %}
-                        <button type="button" class="btn btn-sm btn-outline-secondary"><a href="{% url 'mailing:edit' object.pk %}">Edit</a></button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary"><a href="{% url 'mailing:edit' object.pk %}">Редактировать</a></button>
                     {% endif %}
                     {% if perms.mailing.delete_mailing %}
-                        <button type="button" class="btn btn-sm btn-outline-danger"><a href="{% url 'mailing:delete' object.pk %}">Delete</a></button>
+                        <button type="button" class="btn btn-sm btn-outline-danger"><a href="{% url 'mailing:delete' object.pk %}">Удалить</a></button>
                     {% endif %}
                 </div>
             </div>

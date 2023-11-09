@@ -7,3 +7,4 @@ from blogs.models import Blog
 class BlogAdmin(admin.ModelAdmin):
     list_display = ('pk', 'header', )
     list_filter = ('header', )
+

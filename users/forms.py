@@ -1,21 +1,20 @@
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
-
-from blogs.forms import StyleForMixin
-from users.models import User
-
 from django import forms
 
+from blogs.forms import StyleFormMixin
+from users.models import User
 
-class UserForm(StyleForMixin, UserCreationForm):
+
+class UserRegisterForm(StyleFormMixin, UserCreationForm):
     class Meta:
         model = User
         fields = ('email', 'password1', 'password2')
 
 
-class UserProfileForm(StyleForMixin, UserChangeForm):
+class UserForm(StyleFormMixin, UserChangeForm):
     class Meta:
         model = User
-        fields = ('email', 'first_name', 'last_name', 'comment',)
+        fields = ('email', 'password', 'first_name', 'last_name', 'avatar')
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

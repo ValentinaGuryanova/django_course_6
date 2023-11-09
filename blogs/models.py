@@ -12,7 +12,7 @@ class Blog(models.Model):
     is_published = models.BooleanField(default=True, verbose_name='Опубликовано', **NULLABLE)
 
     def __str__(self):
-        return f'{self.header.title()}'
+        return f'{self.header} {self.image}'
 
     class Meta:
         verbose_name = 'Блог'

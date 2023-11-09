@@ -17,8 +17,8 @@ def my_scheduled_job():
     for new_mailing in mailings:
         clients = [client.email for client in Client.objects.filter(user=new_mailing.user)]
         if new_mailing.mailing_time >= datetime.now(tz):
-            mail_subject = new_mailing.massage.body if new_mailing.massage is not None else 'Рассылка'
-            message = new_mailing.massage.theme if new_mailing.massage is not None else 'Вам назначена рассылка'
+            mail_subject = new_mailing.message.body if new_mailing.message is not None else 'Рассылка'
+            message = new_mailing.message.theme if new_mailing.message is not None else 'Вам назначена рассылка'
             try:
                 send_mail(mail_subject, message, settings.EMAIL_HOST_USER, clients)
                 log = Log.objects.create(date_attempt=datetime.now(tz), status='Успешно', answer='200')
