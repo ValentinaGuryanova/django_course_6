@@ -2,6 +2,9 @@ from datetime import datetime
 
 import pytz
 import smtplib
+
+from celery.schedules import schedule
+from celery.utils import time
 from django.conf import settings
 from django.core.mail import send_mail
 
@@ -13,7 +16,6 @@ def my_scheduled_job():
     mailings = Mailing.objects.filter(status=2)
 
     tz = pytz.timezone('Europe/Moscow')
-
     for new_mailing in mailings:
         clients = [client.email for client in Client.objects.filter(user=new_mailing.user)]
         if new_mailing.mailing_time >= datetime.now(tz):
@@ -29,3 +31,10 @@ def my_scheduled_job():
 
             new_mailing.status = 3
             new_mailing.save()
+
+
+schedule.every(5).minutes.do(my_scheduled_job)
+
+while True:
+    schedule.run_pending()
+    time.sleep(1)
