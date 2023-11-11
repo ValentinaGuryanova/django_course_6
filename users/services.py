@@ -26,8 +26,8 @@ def generate_new_password(request):
     return redirect(reverse('blogs:main'))
 
 
-# def generate_verified_code():
-#     return random.choice('0123456789')
+def generate_verified_code():
+    pass
 
 
 def verify_view(request):
@@ -40,3 +40,4 @@ def verify_view(request):
         user.verified = True
         user.save()
     return render(request, 'users/verifying.html')
+
